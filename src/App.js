@@ -1,15 +1,13 @@
 import { useState } from "react";
-import React from "react";
 import Search from "./components/search/search";
-import Forecast from "./components/forecast/forecast";
 import CurrentWeather from "./components/current-weather/current-weather";
+import Forecast from "./components/forecast/forecast";
 import { WEATHER_API_KEY, WEATHER_API_URL } from "./api";
 import "./App.css";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
-  const [forecast, setForecast] = useState(null);
-  console.log(forecast);
+  const [Forecast, setForecast] = useState(null);
 
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.value.split(" ");
@@ -32,15 +30,14 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-
+ 
   return (
     // eslint-disable-next-line react/jsx-no-undef
-
     <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
-
-      {forecast && <Forecast data={forecast} />}
+      <Forecast data={Forecast} />
+      debugger
     </div>
   );
 }
